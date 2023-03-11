@@ -8,7 +8,6 @@ import axios from 'axios'
 
 const ProductScreen = () => {
   const { id } = useParams()
-  // const product = products.find((p) => p._id === id)
 
   const [product, setProduct] = useState({})
   useEffect(() => {
@@ -17,8 +16,8 @@ const ProductScreen = () => {
       setProduct(data)
     }
     fetchProduct()
-  }, [])
-  
+  }, [id])
+
   if (!product) {
     return <h1>Product not found</h1>
   }
@@ -46,7 +45,7 @@ const ProductScreen = () => {
             </ListGroup.Item>
           </ListGroup>
           <ListGroup.Item>Price : ${product.price}</ListGroup.Item>
-          <ListGroup.Item>Description : ${product.description}</ListGroup.Item>
+          <ListGroup.Item>Description : {product.description}</ListGroup.Item>
         </Col>
         <Col md={3}>
           <Card>
@@ -63,7 +62,6 @@ const ProductScreen = () => {
                 <Row>
                   <Col>Status :</Col>
                   <Col>
-                  
                     <strong>
                       {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
                     </strong>
@@ -74,7 +72,7 @@ const ProductScreen = () => {
                 <Button
                   className='btn-block'
                   type='button'
-                  disabled={(product.countInStock = 0)}
+                  disabled={(product.countInStock === 0)}
                 >
                   Add to Cart
                 </Button>
