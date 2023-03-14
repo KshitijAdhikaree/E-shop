@@ -8,11 +8,10 @@ import {
   ListGroup,
   Image,
   FormControl,
-  Form,
   Button,
   Card,
 } from 'react-bootstrap'
-import { addToCart } from '../actions/cartActions'
+import { addToCart, removeFromCart } from '../actions/cartActions'
 
 const CartScreen = () => {
   const { id } = useParams()
@@ -34,11 +33,11 @@ const CartScreen = () => {
   }, [dispatch, id, qty])
 
   const removeFromCartHandler = (id) => {
-    console.log('remove')
+    dispatch(removeFromCart(id))
   }
 
   const checkoutHandler = () => {
-    window.location.href=('/login?redirect=shipping')
+    window.location.href = '/login?redirect=shipping'
   }
   return (
     <Row>
