@@ -101,13 +101,13 @@ const CartScreen = () => {
           <ListGroup variant='flush'>
             <ListGroup.Item>
               <h3>
-                total items: (
-                {cartItems.reduce((acc, item) => acc + item.qty, 0)})
-              </h3>
-              Total Price : $
+                Subtotal(
+                {cartItems.reduce((acc, item) => acc + item.qty, 0)} item):$
               {cartItems
                 .reduce((acc, item) => acc + item.qty * item.price, 0)
                 .toFixed(2)}
+              </h3>
+             
             </ListGroup.Item>
             <ListGroup.Item>
               <Button
