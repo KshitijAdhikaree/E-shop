@@ -21,7 +21,8 @@ const {loading, error, userInfo} = userLogin
 
     useEffect(() => {
         if(userInfo){
-            history.pushState(redirect)
+          
+          window.location.href = redirect;
         }
     },[history, userInfo, redirect])
 
